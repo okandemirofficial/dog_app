@@ -1,0 +1,38 @@
+import 'dart:async';
+import 'dart:developer';
+
+import 'package:dog_app/app/app_bloc_observer.dart';
+import 'package:dog_app/product/injection.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
+
+Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
+  //For flutter errors (widget errors etc.)
+  FlutterError.onError = (details) {
+    log(details.exceptionAsString(), stackTrace: details.stack);
+  };
+
+  Bloc.observer = const AppBlocObserver();
+
+  await runZonedGuarded(() => _onInit(builder), _onError);
+}
+
+Future<void> _onInit(FutureOr<Widget> Function() builder) async {
+  final widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+
+  //Prezerves splash screen while we load all assets from network
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+
+  await EasyLocalization.ensureInitialized();
+
+  registerDependencyInjections();
+
+  await builder();
+}
+
+///Handles zone error
+void _onError(Object error, StackTrace stack) {
+  log(error.toString(), stackTrace: stack);
+}
