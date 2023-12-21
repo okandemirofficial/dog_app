@@ -8,5 +8,5 @@ A flutter sample case-study project which uses Bloc state managment and [dog api
 - I also created a dependency injection package which depends to every layer to handle dependencies.
 
 ## Possible Improvements
-- Dio package can convert into a singleton package
+- Dio package can be converted into a singleton package
 - I used a simplest environment variables handling. For advanced scenerarios we would use "envied" package.
