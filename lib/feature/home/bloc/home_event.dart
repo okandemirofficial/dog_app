@@ -9,6 +9,10 @@ sealed class HomeEvent extends Equatable {
 }
 
 final class HomeInit extends HomeEvent {
+  const HomeInit({required this.context});
+
+  final BuildContext context;
+
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [context];
 }

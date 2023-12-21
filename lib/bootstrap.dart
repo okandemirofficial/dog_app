@@ -3,7 +3,6 @@ import 'dart:developer';
 
 import 'package:dependency_injection/dependency_injection.dart';
 import 'package:dog_app/app/app_bloc_observer.dart';
-import 'package:dog_app/feature/home/bloc/home_bloc.dart';
 import 'package:dog_app/product/environment/environment_variables.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/widgets.dart';
@@ -36,14 +35,7 @@ Future<void> _onInit(
   await EasyLocalization.ensureInitialized();
   DependencyInjection.handleInitialSetup(environmentVariables);
 
-  final bloc = locator<HomeBloc>()..add(HomeInit());
-
-  //Listen state changes
-  //We'll close the native splash when everthing is loaded
-  final homeBlocSubscription = bloc.stream.listen((state) {});
-  await homeBlocSubscription.cancel();
-
-  await builder();
+  runApp(await builder());
 }
 
 ///Handles zone error

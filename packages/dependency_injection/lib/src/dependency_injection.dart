@@ -25,9 +25,13 @@ class DependencyInjection {
       )
       ..registerLazySingleton<DogRepository>(
         () => DogRepositoryImpl(
-          dogDataSoure: locator<DogDataSource>(),
+          locator<DogDataSource>(),
         ),
       )
-      ..registerFactory<HomeBloc>(HomeBloc.new);
+      ..registerFactory<HomeBloc>(
+        () => HomeBloc(
+          locator<DogRepository>(),
+        ),
+      );
   }
 }

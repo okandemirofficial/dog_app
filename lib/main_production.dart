@@ -8,5 +8,8 @@ class ProductionEnvironmentVariables implements EnvironmentVariables {
 }
 
 void main() {
-  bootstrap(() => const App(), ProductionEnvironmentVariables());
+  bootstrap(
+    App.new,
+    ProductionEnvironmentVariables(),
+  );
 }

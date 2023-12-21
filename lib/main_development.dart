@@ -8,5 +8,8 @@ class DevelopmentEnvironmentVariables implements EnvironmentVariables {
 }
 
 void main() {
-  bootstrap(() => const App(), DevelopmentEnvironmentVariables());
+  bootstrap(
+    App.new,
+    DevelopmentEnvironmentVariables(),
+  );
 }

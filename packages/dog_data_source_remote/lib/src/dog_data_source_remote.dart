@@ -1,6 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:dog_data_source_abstract/dog_data_source_abstract.dart';
-import 'package:models/src/response/breed_list_response_model.dart';
+import 'package:models/models.dart';
+
+///A json parser typedef
+typedef FromJsonParser<T> = T Function(Map<String, dynamic> map);
 
 /// {@template dog_data_source_remote}
 /// A remote dog data source api
@@ -23,8 +26,8 @@ final class DogDataSourceRemote extends DogDataSource {
     throw exception;
   }
 
-  Future<T> _handleGetRequest<T>(String url) async {
-    final response = await _dio.get<T>(url);
+  Future<T> _handleGetRequest<T>(String url, FromJsonParser<T> parser) async {
+    final response = await _dio.get<Map<String, dynamic>>(url);
 
     ///Non success codes
     if ((response.statusCode ?? 404) > 299) {
@@ -37,10 +40,21 @@ final class DogDataSourceRemote extends DogDataSource {
       _onException('''Expected value is null on $url''');
     }
 
-    return response.data!;
+    return parser.call(response.data!);
   }
 
   @override
-  Future<BreedListResponseModel> getBreedList() =>
-      _handleGetRequest('/breeds/list/all');
+  Future<BreedListResponseModel> getBreedList() => _handleGetRequest(
+        '/breeds/list/all',
+        BreedListResponseModel.fromJson,
+      );
+
+  @override
+  Future<RandomImageByBreedResponseModel> getImageUrlByBreed(
+    String breedName,
+  ) =>
+      _handleGetRequest(
+        '/breed/$breedName/images/random',
+        RandomImageByBreedResponseModel.fromJson,
+      );
 }
