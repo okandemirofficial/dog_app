@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:dog_data_source_abstract/dog_data_source_abstract.dart';
 import 'package:models/models.dart';
 
+///A json parser typedef
 typedef FromJsonParser<T> = T Function(Map<String, dynamic> map);
 
 /// {@template dog_data_source_remote}

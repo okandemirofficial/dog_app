@@ -1,20 +1,23 @@
-import 'package:dog_app/feature/home/bloc/home_bloc.dart';
 import 'package:dog_app/product/router/router.dart';
+import 'package:dog_app/product/theme/light_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class App extends StatelessWidget {
   App({
-    required this.homeBloc,
     super.key,
   });
 
-  final HomeBloc homeBloc;
-  late final routerManager = RouterManager(homeBloc);
+  late final routerManager = RouterManager();
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      routerConfig: routerManager.router,
+    return ScreenUtilInit(
+      designSize: const Size(375, 812),
+      child: MaterialApp.router(
+        routerConfig: routerManager.router,
+        theme: lightTheme,
+      ),
     );
   }
 }

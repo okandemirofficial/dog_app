@@ -9,9 +9,7 @@ class ProductionEnvironmentVariables implements EnvironmentVariables {
 
 void main() {
   bootstrap(
-    (homeBloc) => App(
-      homeBloc: homeBloc,
-    ),
+    App.new,
     ProductionEnvironmentVariables(),
   );
 }

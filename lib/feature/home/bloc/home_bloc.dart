@@ -3,6 +3,7 @@ import 'package:dog_repository/dog_repository.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:models/models.dart';
 
 part 'home_event.dart';
@@ -28,29 +29,44 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
       final breedUrlList = await Future.wait<String>(
         breedList.map(
-          (e) {
-            return _dogRepository.getImageUrlByBreed(e.name);
+          (e) async {
+            final url = await _dogRepository.getImageUrlByBreed(e.name);
+
+            // ignore: use_build_context_synchronously
+            await precacheImage(
+              Image.network(url).image,
+              event.context,
+            );
+
+            return url;
           },
         ),
       );
 
-      final breedListWithUrls = breedList.mapIndexed(
-        (i, e) => BreedModel(
-          name: e.name,
-          subBreedNames: e.subBreedNames,
-          breedImageUrl: breedUrlList[i],
+      final breedListWithUrls = breedList
+          .mapIndexed(
+            (i, e) => BreedModel(
+              name: e.name,
+              subBreedNames: e.subBreedNames,
+              breedImageUrl: breedUrlList[i],
+            ),
+          )
+          .toList();
+
+      emit(
+        state.copyWith(
+          breedList: breedListWithUrls,
+          status: HomeStatus.success,
         ),
       );
-
-      // ignore: use_build_context_synchronously
-      await precacheImage(
-        Image.network(breedListWithUrls.first.breedImageUrl!).image,
-        event.context,
+    } catch (e) {
+      state.copyWith(
+        status: HomeStatus.failure,
       );
 
-      debugPrint(breedList.length.toString());
-    } catch (e) {
       rethrow;
+    } finally {
+      FlutterNativeSplash.remove();
     }
   }
 }

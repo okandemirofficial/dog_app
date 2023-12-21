@@ -9,9 +9,7 @@ class DevelopmentEnvironmentVariables implements EnvironmentVariables {
 
 void main() {
   bootstrap(
-    (homeBloc) => App(
-      homeBloc: homeBloc,
-    ),
+    App.new,
     DevelopmentEnvironmentVariables(),
   );
 }
