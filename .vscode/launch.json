@@ -1,0 +1,105 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "dog_app",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "dog_app (profile mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "dog_app (release mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "dog_api_base",
+            "cwd": "packages\\dog_api_base",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "dog_api_base (profile mode)",
+            "cwd": "packages\\dog_api_base",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "dog_api_base (release mode)",
+            "cwd": "packages\\dog_api_base",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "dog_api_remote",
+            "cwd": "packages\\dog_api_remote",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "dog_api_remote (profile mode)",
+            "cwd": "packages\\dog_api_remote",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "dog_api_remote (release mode)",
+            "cwd": "packages\\dog_api_remote",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "dog_repository",
+            "cwd": "packages\\dog_repository",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "dog_repository (profile mode)",
+            "cwd": "packages\\dog_repository",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "dog_repository (release mode)",
+            "cwd": "packages\\dog_repository",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "models",
+            "cwd": "packages\\models",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "models (profile mode)",
+            "cwd": "packages\\models",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "models (release mode)",
+            "cwd": "packages\\models",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }
+    ]
+}

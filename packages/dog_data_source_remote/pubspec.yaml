@@ -1,0 +1,25 @@
+name: dog_data_source_remote
+description: A remote dog data source api
+version: 0.1.0+1
+publish_to: none
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+  flutter: ">=3.10.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  dio: ^5.4.0
+
+  dog_data_source_abstract:
+    path: ../dog_data_source_abstract/
+  models:
+    path: ../models/
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  mocktail: ^1.0.0
+  very_good_analysis: ^5.1.0

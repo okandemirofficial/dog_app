@@ -10,6 +10,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  models:
+    path: ../models/
+  dog_data_source_abstract:
+    path: ../dog_data_source_abstract/
 
 dev_dependencies:
   flutter_test:

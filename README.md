@@ -1,16 +1,12 @@
 # dog_app
 
-A new Flutter project.
+A flutter sample case-study project which uses Bloc state managment and [dog api](https://dog.ceo/dog-api/) as an API Sources
 
-## Getting Started
+## Notes
 
-This project is a starting point for a Flutter application.
+- On the contrary of official Bloc Architecture pattern. I combined and simplified model objects on single "model" package.
+- I also created a dependency injection package which depends to every layer to handle dependencies.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Possible Improvements
+- Dio package can convert into a singleton package
+- I used a simplest environment variables handling. For advanced scenerarios we would use "envied" package.
