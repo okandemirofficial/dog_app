@@ -11,9 +11,24 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider.value(
       value: homeBloc,
-      child: const HomeContent(),
+      child: const Scaffold(
+        appBar: ProjectAppBar(),
+        body: HomeContent(),
+      ),
     );
   }
+}
+
+class ProjectAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const ProjectAppBar({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Placeholder();
+  }
+
+  @override
+  Size get preferredSize => const Size.fromHeight(100);
 }
 
 class HomeContent extends StatelessWidget {
@@ -21,6 +36,8 @@ class HomeContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return const Center(
+      child: Text('deneme'),
+    );
   }
 }

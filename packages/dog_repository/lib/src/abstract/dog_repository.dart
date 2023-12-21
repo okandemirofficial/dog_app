@@ -1,16 +1,15 @@
-import 'package:dog_data_source_abstract/dog_data_source_abstract.dart';
 import 'package:models/models.dart';
 
 /// {@template dog_repository}
 /// The dog repository to get dogs
 /// {@endtemplate}
-abstract class DogRepository {
+abstract interface class DogRepository {
   /// {@macro dog_repository}
-  const DogRepository({required this.dogDataSoure});
-
-  ///A data source for dog feature
-  final DogDataSource dogDataSoure;
+  const DogRepository();
 
   ///Gets breed list
   Future<List<BreedModel>> getBreedList();
+
+  ///Gets image url as a string by breed name
+  Future<String> getImageUrlByBreed(String breedName);
 }

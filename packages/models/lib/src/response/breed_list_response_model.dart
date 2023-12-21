@@ -1,5 +1,7 @@
+import 'package:models/src/interface/i_network_model.dart';
+
 ///Breed list raw response model
-final class BreedListResponseModel {
+final class BreedListResponseModel implements INetworkModel {
   ///A default constructor for [BreedListResponseModel]
   const BreedListResponseModel({
     required this.message,
@@ -39,6 +41,7 @@ final class BreedListResponseModel {
   }
 
   ///ToJson method for [BreedListResponseModel]
+  @override
   Map<String, dynamic> toJson() => {
         'message': Map<String, List<String>>.from(message).map(
           (k, v) => MapEntry<String, dynamic>(k, v.map((x) => x).toList()),

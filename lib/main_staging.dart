@@ -8,5 +8,10 @@ class StagingEnvironmentVariables implements EnvironmentVariables {
 }
 
 void main() {
-  bootstrap(() => const App(), StagingEnvironmentVariables());
+  bootstrap(
+    (homeBloc) => App(
+      homeBloc: homeBloc,
+    ),
+    StagingEnvironmentVariables(),
+  );
 }

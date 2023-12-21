@@ -12,4 +12,7 @@ abstract class DogDataSource {
 
   ///Gets breed list from data source
   Future<BreedListResponseModel> getBreedList();
+
+  ///Gets breed list from data source
+  Future<RandomImageByBreedResponseModel> getImageUrlByBreed(String breedName);
 }

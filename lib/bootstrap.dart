@@ -11,7 +11,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 Future<void> bootstrap(
-  FutureOr<Widget> Function() builder,
+  FutureOr<Widget> Function(HomeBloc homeBloc) builder,
   EnvironmentVariables environmentVariables,
 ) async {
   //For flutter errors (widget errors etc.)
@@ -25,25 +25,27 @@ Future<void> bootstrap(
 }
 
 Future<void> _onInit(
-  FutureOr<Widget> Function() builder,
+  FutureOr<Widget> Function(HomeBloc homeBloc) builder,
   EnvironmentVariables environmentVariables,
 ) async {
   final widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
 
   //Prezerves splash screen while we load all assets from network
-  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+  //FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
   await EasyLocalization.ensureInitialized();
   DependencyInjection.handleInitialSetup(environmentVariables);
 
-  final bloc = locator<HomeBloc>()..add(HomeInit());
+  final bloc = locator<HomeBloc>()..add(const HomeInit());
 
   //Listen state changes
   //We'll close the native splash when everthing is loaded
   final homeBlocSubscription = bloc.stream.listen((state) {});
   await homeBlocSubscription.cancel();
 
-  await builder();
+  FlutterNativeSplash.remove();
+
+  runApp(await builder(bloc));
 }
 
 ///Handles zone error
