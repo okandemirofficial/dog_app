@@ -28,10 +28,16 @@ dependencies:
   #core packages
   flutter_bloc: ^8.1.3
   easy_localization: ^3.0.3
-  get_it: ^7.6.4
   dio: ^5.4.0
   flutter_native_splash: ^2.3.8
   equatable: ^2.0.5
+  go_router: ^12.1.3
+
+  #internal packages
+  models:
+    path: ./packages/models/
+  dependency_injection:
+    path: ./packages/dependency_injection/
 
   #ui
   cupertino_icons: ^1.0.2

@@ -1,0 +1,30 @@
+name: dependency_injection
+description: A layer to handle dependency injection. Depends on every layer
+version: 0.1.0+1
+publish_to: none
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+  flutter: ">=3.10.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  get_it: ^7.6.4
+  dog_app:
+    path: ../../
+  dog_data_source_abstract:
+    path: ../dog_data_source_abstract/
+  dog_data_source_remote:
+    path: ../dog_data_source_remote/
+  dog_repository:
+    path: ../dog_repository/
+  models:
+    path: ../models/
+    
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  mocktail: ^1.0.0
+  very_good_analysis: ^5.1.0
