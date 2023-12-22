@@ -105,7 +105,7 @@ class _ContentLine extends StatelessWidget {
           ),
           Text(
             title,
-            style: context.textTheme.bodyLarge!.copyWith(
+            style: context.textTheme.bodyMedium!.copyWith(
               fontWeight: FontWeight.w500,
             ),
           ),
