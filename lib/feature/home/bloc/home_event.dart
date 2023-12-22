@@ -25,3 +25,19 @@ final class OnKeyboardStatusChanged extends HomeEvent {
   @override
   List<Object?> get props => [newStatus];
 }
+
+final class OnSearchTextChanged extends HomeEvent {
+  const OnSearchTextChanged({required this.text});
+
+  final String text;
+
+  @override
+  List<Object?> get props => [text];
+}
+
+final class OnApplyFilter extends HomeEvent {
+  const OnApplyFilter();
+
+  @override
+  List<Object?> get props => [];
+}

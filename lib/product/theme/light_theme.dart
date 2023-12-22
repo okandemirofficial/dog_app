@@ -26,6 +26,10 @@ final lightTheme = ThemeData(
       fontWeight: FontWeight.w600,
     ),
     bodyLarge: TextStyle(
+      fontSize: 18.sp,
+      fontWeight: FontWeight.w600,
+    ),
+    bodyMedium: TextStyle(
       fontSize: 16.sp,
       fontWeight: FontWeight.w500,
     ),

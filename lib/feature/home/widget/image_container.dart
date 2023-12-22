@@ -37,7 +37,7 @@ class _ImageContainer extends StatelessWidget {
                         EdgeInsets.symmetric(vertical: 8.w, horizontal: 8.h),
                     child: Text(
                       model.name,
-                      style: context.textTheme.bodyLarge!.copyWith(
+                      style: context.textTheme.bodyMedium!.copyWith(
                         color: Colors.white,
                       ),
                     ),

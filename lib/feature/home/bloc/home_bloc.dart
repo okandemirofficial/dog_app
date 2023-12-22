@@ -17,6 +17,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   ) : super(HomeState.initial()) {
     on<HomeInit>(_onInit);
     on<OnKeyboardStatusChanged>(_onSearchBarStatusChanged);
+    on<OnSearchTextChanged>(_onSearchTextChanged);
+    on<OnApplyFilter>(_onFilterApply);
   }
 
   final DogRepository _dogRepository;
@@ -57,6 +59,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       emit(
         state.copyWith(
           breedList: breedListWithUrls,
+          filteredBreedList: breedListWithUrls,
           status: HomeStatus.success,
         ),
       );
@@ -71,10 +74,35 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     }
   }
 
-  Future<void> _onSearchBarStatusChanged(
-    OnKeyboardStatusChanged event,
+  void _onSearchTextChanged(
+    OnSearchTextChanged event,
+    Emitter<HomeState> emit,
+  ) {
+    emit(state.copyWith(searchText: event.text));
+
+    add(const OnApplyFilter());
+  }
+
+  Future<void> _onFilterApply(
+    OnApplyFilter event,
     Emitter<HomeState> emit,
   ) async {
+    if (state.searchText?.isEmpty ?? true) {
+      emit(state.copyWith(filteredBreedList: state.breedList));
+      return;
+    }
+
+    final list = state.breedList
+        ?.where((e) => e.name.contains(state.searchText ?? ''))
+        .toList();
+
+    emit(state.copyWith(filteredBreedList: list));
+  }
+
+  void _onSearchBarStatusChanged(
+    OnKeyboardStatusChanged event,
+    Emitter<HomeState> emit,
+  ) {
     emit(state.copyWith(isKeyboardVisible: event.newStatus));
   }
 }

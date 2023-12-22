@@ -24,11 +24,14 @@ dependencies:
   flutter_svg: ^2.0.9
   flutter_screenutil: ^5.9.0
   cupertino_icons: ^1.0.2
+
+  #TODO: REMOVE
   modal_bottom_sheet: 
     git: 
       url: https://github.com/jamesblasco/modal_bottom_sheet.git
       path: modal_bottom_sheet/
 
+  sliding_up_panel: ^2.0.0+1
 
   #internal packages
   core:
