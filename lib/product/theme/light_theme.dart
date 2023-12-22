@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 final lightTheme = ThemeData(
   brightness: Brightness.light,
@@ -17,5 +18,20 @@ final lightTheme = ThemeData(
     onBackground: Color(0xFF000000),
     surface: Color(0xFFFFFFFF),
     onSurface: Color(0xFF000000),
+  ),
+  fontFamily: 'GalanoGrotesque',
+  textTheme: TextTheme(
+    titleLarge: TextStyle(
+      fontSize: 20.sp,
+      fontWeight: FontWeight.w600,
+    ),
+    bodyLarge: TextStyle(
+      fontSize: 16.sp,
+      fontWeight: FontWeight.w500,
+    ),
+    bodySmall: TextStyle(
+      fontSize: 11.sp,
+      fontWeight: FontWeight.w600,
+    ),
   ),
 );

@@ -14,7 +14,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: const Size(375, 812),
-      child: MaterialApp.router(
+      builder: (context, child) => MaterialApp.router(
         routerConfig: routerManager.router,
         theme: lightTheme,
       ),
