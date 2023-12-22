@@ -10,3 +10,7 @@ A flutter sample case-study project which uses Bloc state managment and [dog api
 ## Possible Improvements
 - Dio package can be converted into a singleton package
 - I used a simplest environment variables handling. For advanced scenerarios we would use "envied" package.
+- Easy localization can be dependency inverted. I have a code generation solution for this. But I didn't apply on that project.
+
+
+
