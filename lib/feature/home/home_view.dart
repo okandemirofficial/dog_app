@@ -11,6 +11,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:models/models.dart';
 
 part './widget/image_container.dart';
+part './widget/search_container.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -27,7 +28,6 @@ class HomeView extends StatelessWidget {
       },
       child: const SafeArea(
         child: Scaffold(
-          extendBody: true,
           appBar: ProjectAppBar(),
           body: HomeContent(),
           bottomNavigationBar: ProjectBottomBar(),
@@ -42,21 +42,41 @@ class HomeContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HomeBloc, HomeState>(
-      builder: (context, state) => Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16.w),
-        child: GridView.builder(
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            crossAxisSpacing: 16.w,
-            mainAxisSpacing: 16.h,
-          ),
-          itemCount: state.breedList?.length ?? 0,
-          itemBuilder: (context, i) => _ImageContainer(
-            state.breedList![i],
+    return Stack(
+      children: [
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16.w),
+          child: BlocBuilder<HomeBloc, HomeState>(
+            buildWhen: (previous, current) =>
+                previous.breedList != current.breedList,
+            builder: (context, state) {
+              return GridView.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 16.w,
+                  mainAxisSpacing: 16.h,
+                ),
+                itemCount: state.breedList?.length ?? 0,
+                itemBuilder: (context, i) => _ImageContainer(
+                  state.breedList![i],
+                ),
+              );
+            },
           ),
         ),
-      ),
+        BlocBuilder<HomeBloc, HomeState>(
+          buildWhen: (previous, current) =>
+              previous.isKeyboardVisible != current.isKeyboardVisible,
+          builder: (context, state) {
+            return Positioned(
+              bottom: state.isKeyboardVisible ? 0 : 16.h,
+              right: state.isKeyboardVisible ? 0 : 16.w,
+              left: state.isKeyboardVisible ? 0 : 16.w,
+              child: const _SearchContainer(),
+            );
+          },
+        ),
+      ],
     );
   }
 }

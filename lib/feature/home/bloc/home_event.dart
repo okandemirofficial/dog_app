@@ -16,3 +16,12 @@ final class HomeInit extends HomeEvent {
   @override
   List<Object?> get props => [context];
 }
+
+final class OnKeyboardStatusChanged extends HomeEvent {
+  const OnKeyboardStatusChanged({required this.newStatus});
+
+  final bool newStatus;
+
+  @override
+  List<Object?> get props => [newStatus];
+}

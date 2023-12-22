@@ -16,6 +16,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     this._dogRepository,
   ) : super(HomeState.initial()) {
     on<HomeInit>(_onInit);
+    on<OnKeyboardStatusChanged>(_onSearchBarStatusChanged);
   }
 
   final DogRepository _dogRepository;
@@ -68,5 +69,12 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     } finally {
       FlutterNativeSplash.remove();
     }
+  }
+
+  Future<void> _onSearchBarStatusChanged(
+    OnKeyboardStatusChanged event,
+    Emitter<HomeState> emit,
+  ) async {
+    emit(state.copyWith(isKeyboardVisible: event.newStatus));
   }
 }
