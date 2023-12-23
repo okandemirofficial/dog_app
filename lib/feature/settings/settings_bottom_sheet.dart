@@ -68,7 +68,8 @@ class _SettingsWidget extends StatelessWidget {
             _ContentLine(
               svgPath: Assets.icon.osVersion,
               title: 'OS Version',
-              subtitle: Platform.operatingSystemVersion,
+              subtitle:
+                  '${Platform.operatingSystem.toUpperCase()} ${Platform.operatingSystemVersion}',
             ),
           ],
         ),

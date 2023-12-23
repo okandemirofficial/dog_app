@@ -1,7 +1,9 @@
 part of '../home_view.dart';
 
 class _SearchContainer extends StatelessWidget {
-  const _SearchContainer();
+  const _SearchContainer(this.maxHeight);
+
+  final double maxHeight;
 
   @override
   Widget build(BuildContext context) {
@@ -10,7 +12,7 @@ class _SearchContainer extends StatelessWidget {
           previous.isKeyboardVisible != current.isKeyboardVisible,
       builder: (context, state) {
         return state.isKeyboardVisible
-            ? const _ExpandedTextField()
+            ? _ExpandedTextField(maxHeight)
             : const _CollapsedTextField();
       },
     );
@@ -18,12 +20,14 @@ class _SearchContainer extends StatelessWidget {
 }
 
 class _ExpandedTextField extends StatelessWidget {
-  const _ExpandedTextField();
+  const _ExpandedTextField(this.maxHeight);
+
+  final double maxHeight;
 
   @override
   Widget build(BuildContext context) {
     return SlidingUpPanel(
-      maxHeight: 438.h,
+      maxHeight: maxHeight,
       panel: Column(
         children: [
           SizedBox(

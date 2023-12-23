@@ -62,45 +62,51 @@ class HomeContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.w),
-          child: BlocBuilder<HomeBloc, HomeState>(
-            buildWhen: (previous, current) =>
-                previous.filteredBreedList != current.filteredBreedList,
-            builder: (context, state) {
-              if (state.filteredBreedList?.isEmpty ?? true) {
-                return const _EmptyStateWidget();
-              }
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        print(constraints.maxHeight);
 
-              return GridView.builder(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 16.w,
-                  mainAxisSpacing: 16.h,
-                ),
-                itemCount: state.filteredBreedList?.length ?? 0,
-                itemBuilder: (context, i) => _ImageContainer(
-                  state.filteredBreedList![i],
-                ),
-              );
-            },
-          ),
-        ),
-        BlocBuilder<HomeBloc, HomeState>(
-          buildWhen: (previous, current) =>
-              previous.isKeyboardVisible != current.isKeyboardVisible,
-          builder: (context, state) {
-            return Positioned(
-              bottom: state.isKeyboardVisible ? 0 : 16.h,
-              right: state.isKeyboardVisible ? 0 : 16.w,
-              left: state.isKeyboardVisible ? 0 : 16.w,
-              child: const _SearchContainer(),
-            );
-          },
-        ),
-      ],
+        return Stack(
+          children: [
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16.w),
+              child: BlocBuilder<HomeBloc, HomeState>(
+                buildWhen: (previous, current) =>
+                    previous.filteredBreedList != current.filteredBreedList,
+                builder: (context, state) {
+                  if (state.filteredBreedList?.isEmpty ?? true) {
+                    return const _EmptyStateWidget();
+                  }
+
+                  return GridView.builder(
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 16.w,
+                      mainAxisSpacing: 16.h,
+                    ),
+                    itemCount: state.filteredBreedList?.length ?? 0,
+                    itemBuilder: (context, i) => _ImageContainer(
+                      state.filteredBreedList![i],
+                    ),
+                  );
+                },
+              ),
+            ),
+            BlocBuilder<HomeBloc, HomeState>(
+              buildWhen: (previous, current) =>
+                  previous.isKeyboardVisible != current.isKeyboardVisible,
+              builder: (context, state) {
+                return Positioned(
+                  bottom: state.isKeyboardVisible ? 0 : 16.h,
+                  right: state.isKeyboardVisible ? 0 : 16.w,
+                  left: state.isKeyboardVisible ? 0 : 16.w,
+                  child: _SearchContainer(constraints.maxHeight),
+                );
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 }
