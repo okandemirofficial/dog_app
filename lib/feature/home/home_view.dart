@@ -9,9 +9,11 @@ import 'package:dog_app/product/widget/swipeable_icon_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:models/models.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
+part './widget/dog_dialog.dart';
 part './widget/image_container.dart';
 part './widget/search_container.dart';
 
