@@ -12,6 +12,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:models/models.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
+part './widget/dog_dialog.dart';
 part './widget/image_container.dart';
 part './widget/search_container.dart';
 
