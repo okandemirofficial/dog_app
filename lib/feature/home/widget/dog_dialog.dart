@@ -103,7 +103,6 @@ class _DialogGeneratebuttonSection extends StatelessWidget {
 class _DialogInfoSection extends StatelessWidget {
   const _DialogInfoSection({
     required this.model,
-    super.key,
   });
 
   final BreedModel model;
@@ -168,15 +167,15 @@ class _DialogTitle extends StatelessWidget {
 }
 
 class _DialogDivider extends StatelessWidget {
-  const _DialogDivider({
-    super.key,
-  });
+  const _DialogDivider();
 
   @override
   Widget build(BuildContext context) {
     return Divider(
       color: context.color.scrim,
       height: 0,
+      indent: 32.w,
+      endIndent: 32.w,
     );
   }
 }

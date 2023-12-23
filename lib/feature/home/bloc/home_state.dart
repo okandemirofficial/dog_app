@@ -34,7 +34,7 @@ class HomeState extends Equatable {
     String? searchText,
     bool? isKeyboardVisible,
     List<BreedModel>? filteredBreedList,
-    String? latestGeneratedImage,
+    String? latestGeneratedImageUrl,
   }) {
     return HomeState(
       status: status ?? this.status,
@@ -43,7 +43,7 @@ class HomeState extends Equatable {
       isKeyboardVisible: isKeyboardVisible ?? this.isKeyboardVisible,
       filteredBreedList: filteredBreedList ?? this.filteredBreedList,
       latestGeneratedImageUrl:
-          latestGeneratedImage ?? this.latestGeneratedImageUrl,
+          latestGeneratedImageUrl ?? this.latestGeneratedImageUrl,
     );
   }
 

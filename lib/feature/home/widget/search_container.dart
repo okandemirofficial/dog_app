@@ -42,7 +42,7 @@ class _ExpandedTextField extends StatelessWidget {
                 maxLines: 20,
                 decoration: InputDecoration(
                   fillColor: Colors.white,
-                  hintText: 'Search',
+                  hintText: 'Search'.tr(),
                   contentPadding: EdgeInsets.symmetric(
                     horizontal: 16.w,
                   ),
@@ -71,41 +71,70 @@ class _CollapsedTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 64.h,
-      decoration: BoxDecoration(
-        color: context.color.surface,
-        borderRadius: BorderRadius.circular(8.r),
-        border: Border.all(
-          color: context.color.scrim,
-          width: 2,
-        ),
-      ),
-      child: BlocBuilder<HomeBloc, HomeState>(
-        builder: (context, state) {
-          return TextField(
-            readOnly: true,
-            onTap: () {
-              context.read<HomeBloc>().add(
-                    const OnKeyboardStatusChanged(
-                      newStatus: true,
-                    ),
-                  );
-            },
-            decoration: InputDecoration(
-              fillColor: Colors.white,
-              hintText: (state.searchText?.isEmpty ?? true)
-                  ? 'Search'
-                  : state.searchText,
-              contentPadding: EdgeInsets.symmetric(
-                horizontal: 16.w,
+    return GestureDetector(
+      onTap: () {
+        context.read<HomeBloc>().add(
+              const OnKeyboardStatusChanged(
+                newStatus: true,
               ),
-              border: InputBorder.none,
-            ),
-            cursorColor: context.color.secondary,
-          );
-        },
+            );
+      },
+      child: Container(
+        height: 64.h,
+        decoration: BoxDecoration(
+          color: context.color.surface,
+          borderRadius: BorderRadius.circular(8.r),
+          border: Border.all(
+            color: context.color.scrim,
+            width: 2,
+          ),
+        ),
+        child: BlocBuilder<HomeBloc, HomeState>(
+          builder: (context, state) {
+            return Center(
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Padding(
+                  padding: EdgeInsets.only(left: 16.w),
+                  child: Text(
+                    (state.searchText?.isEmpty ?? true)
+                        ? 'Search'.tr()
+                        : state.searchText!,
+                    textAlign: TextAlign.start,
+                    style: context.textTheme.titleMedium!.copyWith(
+                      color: (state.searchText?.isEmpty ?? true)
+                          ? context.theme.hintColor
+                          : context.color.onBackground,
+                    ),
+                  ),
+                ),
+              ),
+            );
+          },
+        ),
       ),
     );
   }
 }
+
+// child: TextField(
+            //   readOnly: true,
+            //   onTap: () {
+            //     context.read<HomeBloc>().add(
+            //           const OnKeyboardStatusChanged(
+            //             newStatus: true,
+            //           ),
+            //         );
+            //   },
+            //   decoration: InputDecoration(
+            //     fillColor: Colors.white,
+            //     hintText: (state.searchText?.isEmpty ?? true)
+            //         ? 'Search'.tr()
+            //         : state.searchText,
+            //     contentPadding: EdgeInsets.symmetric(
+            //       horizontal: 16.w,
+            //     ),
+            //     border: InputBorder.none,
+            //   ),
+            //   cursorColor: context.color.secondary,
+            // ),

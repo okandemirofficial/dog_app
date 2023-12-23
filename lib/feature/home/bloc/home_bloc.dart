@@ -113,7 +113,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   ) async {
     final url = await _dogRepository.getImageUrlByBreed(event.breedName);
 
-    emit(state.copyWith(latestGeneratedImage: url));
+    emit(state.copyWith(latestGeneratedImageUrl: url));
 
     if (event.context.mounted) {
       // ignore: use_build_context_synchronously

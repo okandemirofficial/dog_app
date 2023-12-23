@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:core/core.dart';
 import 'package:dog_app/gen/assets.gen.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -42,34 +43,34 @@ class _SettingsWidget extends StatelessWidget {
             ),
             _ContentLine(
               svgPath: Assets.icon.help,
-              title: 'Help',
+              title: 'Help'.tr(),
             ),
             const _ContentDivider(),
             _ContentLine(
               svgPath: Assets.icon.star,
-              title: 'Rate Us',
+              title: 'Rate Us'.tr(),
             ),
             const _ContentDivider(),
             _ContentLine(
               svgPath: Assets.icon.share,
-              title: 'Share with Friends',
+              title: 'Share with Friends'.tr(),
             ),
             const _ContentDivider(),
             _ContentLine(
               svgPath: Assets.icon.termsOfUse,
-              title: 'Terms of Use',
+              title: 'Terms of Use'.tr(),
             ),
             const _ContentDivider(),
             _ContentLine(
               svgPath: Assets.icon.privacyPolicy,
-              title: 'Privacy Policy',
+              title: 'Privacy Policy'.tr(),
             ),
             const _ContentDivider(),
             _ContentLine(
               svgPath: Assets.icon.osVersion,
-              title: 'OS Version',
+              title: 'OS Version'.tr(),
               subtitle:
-                  '${Platform.operatingSystem.toUpperCase()} ${Platform.operatingSystemVersion}',
+                  '''${Platform.operatingSystem.toUpperCase()} ${Platform.operatingSystemVersion}''',
             ),
           ],
         ),

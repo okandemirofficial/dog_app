@@ -2,6 +2,7 @@ import 'package:core/core.dart';
 import 'package:core/widget/svg_picture.dart';
 import 'package:dog_app/feature/settings/settings_bottom_sheet.dart';
 import 'package:dog_app/gen/assets.gen.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -25,7 +26,7 @@ class ProjectBottomBar extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               _TabBarButton(
-                title: 'Home', //Todo: localize,
+                title: 'Home'.tr(),
                 iconPath: Assets.icon.home,
                 iconSize: Size(25.w, 30.h),
                 isSelected: true,
@@ -37,7 +38,7 @@ class ProjectBottomBar extends StatelessWidget {
                 color: context.color.scrim,
               ),
               _TabBarButton(
-                title: 'Settings', //Todo: localize,
+                title: 'Settings'.tr(),
                 iconPath: Assets.icon.settings,
                 iconSize: Size(26.w, 26.h),
                 isSelected: false,

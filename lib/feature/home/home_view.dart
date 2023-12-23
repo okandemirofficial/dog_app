@@ -6,6 +6,7 @@ import 'package:dog_app/feature/home/bloc/home_bloc.dart';
 import 'package:dog_app/product/widget/poject_app_bar.dart';
 import 'package:dog_app/product/widget/project_bottom_bar.dart';
 import 'package:dog_app/product/widget/swipeable_icon_widget.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -64,8 +65,6 @@ class HomeContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        print(constraints.maxHeight);
-
         return Stack(
           children: [
             Padding(
@@ -121,11 +120,11 @@ class _EmptyStateWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            'No results found',
+            'No results found'.tr(),
             style: context.textTheme.bodyLarge,
           ),
           Text(
-            'Try searching with another word',
+            'Try searching with another word'.tr(),
             style: context.textTheme.bodyMedium,
           ),
         ],

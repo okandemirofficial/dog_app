@@ -39,6 +39,7 @@ final _lightTextTheme = TextTheme(
 
 final lightTheme = ThemeData(
   brightness: Brightness.light,
+  hintColor: const Color(0XFF3C3C43),
   colorScheme: _lightColorScheme,
   fontFamily: 'GalanoGrotesque',
   textTheme: _lightTextTheme,

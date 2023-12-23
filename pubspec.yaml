@@ -49,6 +49,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/icon/
+    - assets/translations/
   fonts:
     - family: GalanoGrotesque
       fonts:
