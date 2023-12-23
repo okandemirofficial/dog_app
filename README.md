@@ -1,5 +1,9 @@
 # dog_app
 
+<p align="center">
+  <img src="./assets/splash/dog_app_splash.png" alt="dog app image" width="200"/>
+</p>
+
 A flutter sample case-study project which uses Bloc state managment and [dog api](https://dog.ceo/dog-api/) as an API Sources
 
 ## Notes
