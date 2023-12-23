@@ -24,6 +24,10 @@ final _lightTextTheme = TextTheme(
     fontWeight: FontWeight.w600,
   ),
   bodyLarge: TextStyle(
+    fontSize: 18.sp,
+    fontWeight: FontWeight.w600,
+  ),
+  bodyMedium: TextStyle(
     fontSize: 16.sp,
     fontWeight: FontWeight.w500,
   ),
@@ -43,7 +47,7 @@ final lightTheme = ThemeData(
       fixedSize: MaterialStatePropertyAll(
         Size(312.w, 56.h),
       ),
-      foregroundColor: MaterialStatePropertyAll(_lightColorScheme.primary),
+      foregroundColor: MaterialStatePropertyAll(_lightColorScheme.onPrimary),
       backgroundColor: MaterialStatePropertyAll(_lightColorScheme.primary),
       side: const MaterialStatePropertyAll(BorderSide.none),
       shape: MaterialStatePropertyAll(
@@ -52,7 +56,7 @@ final lightTheme = ThemeData(
         ),
       ),
       textStyle: MaterialStatePropertyAll(
-        _lightTextTheme.titleMedium,
+        _lightTextTheme.bodyMedium,
       ),
     ),
   ),

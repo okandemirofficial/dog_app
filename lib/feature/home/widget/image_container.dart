@@ -13,9 +13,13 @@ class _ImageContainer extends StatelessWidget {
       borderRadius: BorderRadius.circular(8.r),
       child: InkWell(
         onTap: () {
+          context.read<HomeBloc>().add(OnGetRandomImage(context, model.name));
           showDialog<void>(
             context: context,
-            builder: (context) => _DogDialog(model: model),
+            builder: (innerContext) => _DogDialog(
+              model: model,
+              bloc: context.read<HomeBloc>(),
+            ),
           );
         },
         child: Stack(
@@ -44,7 +48,7 @@ class _ImageContainer extends StatelessWidget {
                           EdgeInsets.symmetric(vertical: 8.w, horizontal: 8.h),
                       child: Text(
                         model.name,
-                        style: context.textTheme.bodyLarge!.copyWith(
+                        style: context.textTheme.bodyMedium!.copyWith(
                           color: Colors.white,
                         ),
                       ),

@@ -12,12 +12,15 @@ class HomeState extends Equatable {
   final String? searchText;
   final bool isKeyboardVisible;
 
+  final String? latestGeneratedImageUrl;
+
   const HomeState({
     required this.status,
     required this.isKeyboardVisible,
     this.filteredBreedList,
     this.breedList,
     this.searchText,
+    this.latestGeneratedImageUrl,
   });
 
   factory HomeState.initial() => const HomeState(
@@ -31,6 +34,7 @@ class HomeState extends Equatable {
     String? searchText,
     bool? isKeyboardVisible,
     List<BreedModel>? filteredBreedList,
+    String? latestGeneratedImage,
   }) {
     return HomeState(
       status: status ?? this.status,
@@ -38,10 +42,18 @@ class HomeState extends Equatable {
       searchText: searchText ?? this.searchText,
       isKeyboardVisible: isKeyboardVisible ?? this.isKeyboardVisible,
       filteredBreedList: filteredBreedList ?? this.filteredBreedList,
+      latestGeneratedImageUrl:
+          latestGeneratedImage ?? this.latestGeneratedImageUrl,
     );
   }
 
   @override
-  List<Object?> get props =>
-      [status, breedList, searchText, isKeyboardVisible, filteredBreedList];
+  List<Object?> get props => [
+        status,
+        breedList,
+        searchText,
+        isKeyboardVisible,
+        filteredBreedList,
+        latestGeneratedImageUrl,
+      ];
 }

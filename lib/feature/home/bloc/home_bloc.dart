@@ -19,6 +19,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     on<OnKeyboardStatusChanged>(_onSearchBarStatusChanged);
     on<OnSearchTextChanged>(_onSearchTextChanged);
     on<OnApplyFilter>(_onFilterApply);
+    on<OnGetRandomImage>(_onGetRandomImage);
   }
 
   final DogRepository _dogRepository;
@@ -104,5 +105,22 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     Emitter<HomeState> emit,
   ) {
     emit(state.copyWith(isKeyboardVisible: event.newStatus));
+  }
+
+  Future<void> _onGetRandomImage(
+    OnGetRandomImage event,
+    Emitter<HomeState> emit,
+  ) async {
+    final url = await _dogRepository.getImageUrlByBreed(event.breedName);
+
+    emit(state.copyWith(latestGeneratedImage: url));
+
+    if (event.context.mounted) {
+      // ignore: use_build_context_synchronously
+      await precacheImage(
+        Image.network(url).image,
+        event.context,
+      );
+    }
   }
 }

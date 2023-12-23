@@ -41,3 +41,13 @@ final class OnApplyFilter extends HomeEvent {
   @override
   List<Object?> get props => [];
 }
+
+final class OnGetRandomImage extends HomeEvent {
+  const OnGetRandomImage(this.context, this.breedName);
+
+  final String breedName;
+  final BuildContext context;
+
+  @override
+  List<Object?> get props => [breedName, context];
+}
